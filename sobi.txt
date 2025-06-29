@@ -1,0 +1,42 @@
+# Run and deploy your AI Studio app
+
+This contains everything you need to run your app locally.
+
+## Run Locally
+
+
+1. npm init -y
+2. npm install --save-dev vite @vitejs/plugin-react
+3. npm install react react-dom @google/genai pdfjs-dist
+4. npm install --save-dev @types/node
+
+# 
+<script type="module" src="/src/index.tsx"></script>
+
+#
+"scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+
+
+#
+/// <reference types="node" />
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  define: {
+    // TEMPORARY DEBUGGING STEP:
+    // Replace "YOUR_GEMINI_API_KEY_HERE" with your actual Gemini API key.
+    // This is NOT a permanent solution and should be removed once .env issues are resolved.
+    // Ensure this file is NOT committed with your actual API key.
+    'process.env.API_KEY': JSON.stringify("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+    //
+    // Original line (restore this after debugging):
+    // 'process.env.API_KEY': JSON.stringify(process.env.VITE_GEMINI_API_KEY)
+  }
+})
